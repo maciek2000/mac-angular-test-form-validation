@@ -1,0 +1,57 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header">Angular Test - Form Validation</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors">Name is required and should be longer than 5 characters and not
+                        contain a number</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" />
+                <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                    <div *ngIf="f.companyName.errors.required">Company Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" formControlName="jobTitle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }" />
+                <div *ngIf="submitted && f.jobTitle.errors" class="invalid-feedback">
+                    <div *ngIf="f.jobTitle.errors.required">Job Title is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Years in current role</label>
+                <input type="range" name="range" formControlName="yearsInCurrentRole" step="1" min="0" max="50" value="" onchange="rangePrimary.value=value" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yearsInCurrentRole.errors }">
+                <input type="text" id="rangePrimary" />
+                <div *ngIf="submitted && f.yearsInCurrentRole.errors" class="invalid-feedback">
+                    <div *ngIf="f.yearsInCurrentRole.errors.required">Years in current role is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>What do you like about marketing corp</label>
+                <textarea type="text" formControlName="marketing" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.marketing.errors }" ></textarea>
+                <div *ngIf="submitted && f.marketing.errors" class="invalid-feedback">
+                    <div *ngIf="f.marketing.errors.required">What do you like about marketing corp is required</div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Submit</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="https://mac.portfolio247.net" target="_top">mac.in4matic</a>
+    </p>
+</div>
